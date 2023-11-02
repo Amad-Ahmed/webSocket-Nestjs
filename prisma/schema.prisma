@@ -11,6 +11,14 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
+  id          Int           @id @default(autoincrement())
+  name        String
+  UserMessage UserMessage[]
+}
+
+model UserMessage {
+  id      Int    @id @default(autoincrement())
+  userId  Int
+  message String
+  user    User   @relation(fields: [userId], references: [id])
 }

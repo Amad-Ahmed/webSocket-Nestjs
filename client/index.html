@@ -2,11 +2,13 @@
   <head>
     <script src="https://cdn.socket.io/4.3.2/socket.io.min.js" integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs" crossorigin="anonymous"></script>
     <script>
-      const socket = io('http://localhost:3001');
+      const socket = io('http://localhost:8080');
       socket.on('connect', () => {
         console.log('Connected');
-        console.log("BLABLABLA")
-        // socket.emit('events', 'test');
+        // console.log("Creating User");
+        // socket.emit('create', {name: 'Amad'});
+        console.log("Sending message to all users");
+        socket.emit('message', "Hello World");
       });
 
       </script>
@@ -14,16 +16,11 @@
 
   <body></body>
 </html>
-  // const socket = new WebSocket('ws://localhost:8080');
-  // socket.onopen = function() {
-  //   console.log('Connected');
-  //   socket.send(
-  //     JSON.stringify({
-  //       event: 'events',
-  //       data: 'test',
-  //     }),
-  //   );
-  //   socket.onmessage = function(data) {
-  //     console.log(data);
-  //   };
-  // };
+        <!-- // console.log("Emitting Events")
+        // socket.emit('events', {test: 'test'});
+        // socket.on('events', (data) => {
+        //   console.log('Events :: ', data);
+        // });
+        // console.log("Emitting Events Done");
+        // // socket.emit('identity',0,response => console.log('Identity :: ',response),
+        // // ); -->
