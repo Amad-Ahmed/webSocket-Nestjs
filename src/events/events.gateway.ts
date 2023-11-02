@@ -6,16 +6,13 @@ import {
 } from '@nestjs/websockets';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { Server } from 'ws';
 
-@WebSocketGateway({
-  cors: {
-    origin: 'http://localhost:5500',
-  },
-  port: 3001,
-})
-// @WebSocketGateway(8080)
+@WebSocketGateway({})
 export class EventsGateway {
+  constructor(private prisma: PrismaService) {}
+
   @WebSocketServer()
   server: Server;
 
